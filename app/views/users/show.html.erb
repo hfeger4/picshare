@@ -5,9 +5,10 @@
 
 <p>
   <% @user.posts.each do |post| %>
-    <li>
-      <%= post.caption %>
-    </li>
+    <p>
+      <%= post.caption %><br />
+      <%= image_tag(post.image.url :preview) %>
+    </p>
   <% end %>
 </p>
 

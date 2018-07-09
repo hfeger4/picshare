@@ -7,9 +7,9 @@
         <strong>
           <%= post.caption %>
         </strong>
-        <strong>- <%= link_to post.user %></strong>
+        <strong>- <%= link_to post.user, post.user %></strong>
         <p class="image">
-          <%= link_to image_tag(post.image.url), post %>
+          <%= link_to image_tag(post.image.url :preview), post %>
         </p>
         <p>
           <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>

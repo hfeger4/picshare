@@ -2,7 +2,7 @@
 <p>
   <%= image_tag(@post.image.url) %><br />
   <em><%= @post.caption %></em>
-  <strong>- <%= link_to @post.user %></strong>
+  <strong>- <%= link_to @post.user, @post.user %></strong>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
