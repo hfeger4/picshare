@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
+  include AuthorizationHelper
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  before_action :confirm_owner, only: [:edit, :update, :destroy]
+  before_action :confirm_login, only: :new
   # GET /posts
   # GET /posts.json
   def index
@@ -70,5 +72,11 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:caption, :image)
+    end
+
+    def confirm_owner
+      unless @post.user == current_user
+        redirect_to root_path, alert: "You dont have permission to do that Dave."
+      end
     end
 end
